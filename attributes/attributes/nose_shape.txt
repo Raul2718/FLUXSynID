@@ -1,0 +1,6 @@
+Small and narrow,0.1666666665
+Wide and flat,0.1666666667
+Long and straight,0.1666666667
+Upturned,0.1666666667
+Hooked,0.1666666667
+Rounded tip,0.1666666667

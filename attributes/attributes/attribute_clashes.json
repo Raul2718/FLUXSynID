@@ -1,0 +1,116 @@
+[
+    {
+        "fixed_file": "genders.txt",
+        "fixed_attributes": [
+            "Female"
+        ],
+        "secondary_file": "hair_styles.txt",
+        "secondary_attributes": [
+            "Bald",
+            "Buzzed"
+        ]
+    },
+    {
+        "fixed_file": "genders.txt",
+        "fixed_attributes": [
+            "Female"
+        ],
+        "secondary_file": "facial_hair.txt",
+        "secondary_attributes": [
+            "Clean-shaven",
+            "Stubble",
+            "Light beard",
+            "Full beard",
+            "Mustache",
+            "Goatee",
+            "Mutton chops",
+            "Van Dyke beard",
+            "Soul patch",
+            "Handlebar mustache",
+            "Pencil mustache",
+            "Horseshoe mustache",
+            "Anchor beard",
+            "Balbo beard",
+            "Ducktail beard",
+            "Circle beard",
+            "Imperial mustache",
+            "Chevron mustache",
+            "Barely-there beard"
+        ]
+    },
+    {
+        "fixed_file": "ages.txt",
+        "fixed_attributes": [
+            "70-79",
+            "80+"
+        ],
+        "secondary_file": "hair_colors.txt",
+        "secondary_attributes": [
+            "Black",
+            "Brown",
+            "Blonde",
+            "Red",
+            "Blue",
+            "Green",
+            "Pink",
+            "Purple",
+            "Orange",
+            "Yellow",
+            "Multicolored"
+        ]
+    },
+    {
+        "fixed_file": "ages.txt",
+        "fixed_attributes": [
+            "70-79",
+            "80+"
+        ],
+        "secondary_file": "skin_type.txt",
+        "secondary_attributes": [
+            "Smooth and clear"
+        ]
+    },
+    {
+        "fixed_file": "hair_styles.txt",
+        "fixed_attributes": [
+            "Bald"
+        ],
+        "secondary_file": "hair_colors.txt",
+        "secondary_attributes": [
+            "Black",
+            "Brown",
+            "Blonde",
+            "Red",
+            "Gray",
+            "White",
+            "Silver",
+            "Blue",
+            "Green",
+            "Pink",
+            "Purple",
+            "Orange",
+            "Yellow",
+            "Multicolored"
+        ]
+    },
+    {
+        "fixed_file": "genders.txt",
+        "fixed_attributes": [
+            "Male"
+        ],
+        "secondary_file": "headwear.txt",
+        "secondary_attributes": [
+            "Hijab"
+        ]
+    },
+    {
+        "fixed_file": "genders.txt",
+        "fixed_attributes": [
+            "Female"
+        ],
+        "secondary_file": "headwear.txt",
+        "secondary_attributes": [
+            "Kippah"
+        ]
+    }
+]

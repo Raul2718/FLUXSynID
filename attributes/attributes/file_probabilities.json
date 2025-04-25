@@ -1,0 +1,16 @@
+{
+    "ages.txt": 1.0,
+    "hair_colors.txt": 0.5,
+    "genders.txt": 1.0,
+    "facial_hair.txt": 0.7,
+    "hair_styles.txt": 0.7,
+    "body_type.txt": 0.5,
+    "face_shape.txt": 0.5,
+    "skin_type.txt": 0.3,
+    "nose_shape.txt": 0.5,
+    "origins.txt": 1.0,
+    "lip_shape.txt": 0.5,
+    "eye_shape.txt": 0.5,
+    "headwear.txt": 0.01,
+    "eyewear.txt": 0.1
+}

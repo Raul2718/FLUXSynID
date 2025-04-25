@@ -1,0 +1,17 @@
+South Asian,0.0588235296
+East Asian,0.0588235294
+Southeast Asian,0.0588235294
+West Asian,0.0588235294
+Central Asian,0.0588235294
+East African,0.0588235294
+West African,0.0588235294
+North African,0.0588235294
+Middle African,0.0588235294
+South African,0.0588235294
+East European,0.0588235294
+West European,0.0588235294
+South European,0.0588235294
+North European,0.0588235294
+South American,0.0588235294
+Central American,0.0588235294
+North American,0.0588235294

@@ -1,0 +1,19 @@
+Clean-shaven,0.6500000000
+Stubble,0.0300000000
+Light beard,0.0500000000
+Full beard,0.0200000000
+Mustache,0.0600000000
+Goatee,0.0500000000
+Mutton chops,0.0200000000
+Van Dyke beard,0.0100000000
+Soul patch,0.0100000000
+Handlebar mustache,0.0100000000
+Pencil mustache,0.0100000000
+Horseshoe mustache,0.0100000000
+Anchor beard,0.0100000000
+Balbo beard,0.0100000000
+Ducktail beard,0.0100000000
+Circle beard,0.0100000000
+Imperial mustache,0.0100000000
+Chevron mustache,0.0100000000
+Barely-there beard,0.0100000000
