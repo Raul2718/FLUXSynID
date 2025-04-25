@@ -14,6 +14,7 @@
 .dockerignore
 Dockerfile
 build_image.sh
+setup.sh
 ComfyUI/models/
 ComfyUI/user/
 ComfyUI/temp/
