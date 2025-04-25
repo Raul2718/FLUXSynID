@@ -1,0 +1,12 @@
+comfyui:
+  base_path: ../models/ComfyUI
+  is_default: true
+  clip: clip
+  configs: configs
+  diffusion_models: unet
+  loras: loras
+  vae: vae
+  ultralytics: ultralytics
+  pulid: pulid
+  liveportrait: liveportrait
+  insightface: insightface
