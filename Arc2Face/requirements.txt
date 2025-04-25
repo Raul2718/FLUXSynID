@@ -1,0 +1,8 @@
+numpy
+diffusers
+transformers
+peft
+accelerate
+insightface
+onnxruntime-gpu
+gradio
