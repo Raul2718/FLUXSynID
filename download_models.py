@@ -115,6 +115,33 @@ def download_antelopev2(target_dir, remove_glintr=False):
     print(f"antelopev2 is ready at: {target_dir}")
 
 
+def download_buffalo_l(target_dir):
+    expected_file = os.path.join(target_dir, "1k3d68.onnx")
+
+    if os.path.exists(expected_file):
+        print(f"buffalo_l already exists, skipping download.")
+        return
+
+    print("Downloading buffalo_l...")
+
+    nested_base = download(sub_dir="", name="buffalo_l", force=True, root=os.path.dirname(target_dir))
+    nested_dir = os.path.join(nested_base, "buffalo_l")
+
+    if os.path.isdir(nested_dir):
+        os.makedirs(target_dir, exist_ok=True)
+        for file_name in os.listdir(nested_dir):
+            src = os.path.join(nested_dir, file_name)
+            dst = os.path.join(target_dir, file_name)
+            shutil.move(src, dst)
+        os.rmdir(nested_dir)
+
+    zip_file = os.path.join(os.path.dirname(target_dir), "buffalo_l.zip")
+    if os.path.exists(zip_file):
+        os.remove(zip_file)
+
+    print(f"buffalo_l is ready at: {target_dir}")
+
+
 def main():
     # Download individual files
     for target_dir, repo_id, filename in MODELS_FULL:
@@ -126,6 +153,9 @@ def main():
 
     # antelopev2 for ComfyUI
     download_antelopev2("models/ComfyUI/insightface/models/antelopev2", remove_glintr=False)
+
+    # buffalo_l for ComfyUI
+    download_buffalo_l("models/ComfyUI/insightface/models/buffalo_l")
 
     # antelopev2 for Arc2Face
     download_antelopev2("models/Arc2Face/antelopev2", remove_glintr=True)
