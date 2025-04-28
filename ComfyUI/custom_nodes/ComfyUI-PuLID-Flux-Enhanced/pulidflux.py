@@ -296,6 +296,9 @@ class PulidFluxEvaClipLoader:
     def load_eva_clip(self, local_pretrained=None):
         from .eva_clip.factory import create_model_and_transforms
 
+        if local_pretrained is None:
+            local_pretrained = "../models/huggingface/EVA-CLIP/EVA02_CLIP_L_336_psz14_s6B.pt"
+
         model, _, _ = create_model_and_transforms(
             "EVA02-CLIP-L-14-336", "eva_clip", force_custom_clip=True, local_pretrained=local_pretrained
         )

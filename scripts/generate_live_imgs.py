@@ -247,9 +247,8 @@ def main(dataset_dir, num_live_imgs, no_pulid, no_same_seed_and_prompt):
             pulidfluxmodelloader_4 = pulidfluxmodelloader.load_model(pulid_file="pulid_flux_v0.9.1.safetensors")
 
             pulidfluxevacliploader = NODE_CLASS_MAPPINGS["PulidFluxEvaClipLoader"]()
-
-            local_eva_clip_path = "./models/huggingface/EVA-CLIP/EVA02_CLIP_L_336_psz14_s6B.pt"
-            pulidfluxevacliploader_5 = pulidfluxevacliploader.load_eva_clip(local_eva_clip_path)
+            local_pretrained = "./models/huggingface/EVA-CLIP/EVA02_CLIP_L_336_psz14_s6B.pt"
+            pulidfluxevacliploader_5 = pulidfluxevacliploader.load_eva_clip(local_pretrained)
 
             pulidfluxinsightfaceloader = NODE_CLASS_MAPPINGS["PulidFluxInsightFaceLoader"]()
             pulidfluxinsightfaceloader_6 = pulidfluxinsightfaceloader.load_insightface(provider="CPU")
