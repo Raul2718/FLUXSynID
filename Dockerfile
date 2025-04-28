@@ -2,7 +2,7 @@
 FROM nvidia/cuda:12.8.0-devel-ubuntu22.04
 
 # Set to match your GPU compute capability (e.g. 8.9+PTX). See build_image.sh for auto-detect.
-ENV TORCH_CUDA_ARCH_LIST="12.0+PTX"
+ENV TORCH_CUDA_ARCH_LIST="8.9+PTX"
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -59,7 +59,7 @@ RUN pip install --no-build-isolation -v --no-cache-dir gptqmodel==2.2.0
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the rest of your codebase
+# Copy the rest of the codebase
 COPY . .
 
 RUN rm requirements.txt
