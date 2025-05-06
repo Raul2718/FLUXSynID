@@ -1,13 +1,8 @@
 import torch
 import torch.nn.functional as F
-import numpy as np
 import time
-from models.face_recognition.adaface.model import AdaFace
-from models.face_recognition.arcface.model import ArcFace
-from models.face_recognition.curricularface.model import CurricularFace
 from loc_utils.crop_faces import FaceCropper
 from torchvision import transforms
-import torch.nn.functional as F
 import argparse
 import os
 from PIL import Image
@@ -38,6 +33,20 @@ def parse_args():
     args = parser.parse_args()
 
     return args
+
+
+def load_model(frs_name):
+    if frs_name == "arcface" or frs_name == "arcface-onot":
+        from models.face_recognition.arcface.model import ArcFace
+        return ArcFace()
+    elif frs_name == "adaface":
+        from models.face_recognition.adaface.model import AdaFace
+        return AdaFace()
+    elif frs_name == "curricularface":
+        from models.face_recognition.curricularface.model import CurricularFace
+        return CurricularFace()
+    else:
+        raise ValueError(f"Unknown FRS type: {frs_name}")
 
 
 class FaceDataset(Dataset):
@@ -83,13 +92,6 @@ def generate_features_dict(dataset_dir, frs, folder_list_path=None, batch_size=6
             allowed_folders = {line.strip() for line in f if line.strip()}
 
     face_cropper = FaceCropper(crop_type="mtcnn_aligned_crop")
-
-    if frs in ["arcface", "arcface-onot"]:
-        frs = ArcFace()
-    elif frs == "adaface":
-        frs = AdaFace()
-    elif frs == "curricularface":
-        frs = CurricularFace()
 
     transform = transforms.Compose(
         [
@@ -193,8 +195,10 @@ if __name__ == "__main__":
     # useful when filtering identities previously filtered by ICAO compliance
     folder_list_path = None
 
+    frs_model = load_model(args.frs)
+
     features_dict = generate_features_dict(
-        dataset_dir=args.dataset_dir, frs=args.frs, folder_list_path=folder_list_path
+        dataset_dir=args.dataset_dir, frs=frs_model, folder_list_path=folder_list_path
     )
 
     # Time the filtering process.
