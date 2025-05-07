@@ -128,7 +128,7 @@ Depending on your operating system, follow the appropriate final setup step:
 - Run the setup script:
 
   ```bash
-  python win_setup.py
+  python setup_windows.py
   ```
 
 - If your machine has multiple GPUs, ensure only one is visible to the system:
