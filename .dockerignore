@@ -19,6 +19,7 @@ setup.sh
 setup_windows.py
 experiments/
 .etc/
+assets/
 ComfyUI/models/
 ComfyUI/user/
 ComfyUI/temp/
