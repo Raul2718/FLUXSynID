@@ -24,7 +24,7 @@
 
 ## Installing
 
-The framework has been validated using **Python 3.11**. Both Linux and Windows OS are supported, with Docker image being the simplest to run. **Note: Only NVIDIA GPUs with [compute capability](https://developer.nvidia.com/cuda-gpus) >= 6.0 are supported**.
+The framework has been validated using **Python 3.11**. Both Linux and Windows OS are supported, with Docker image being the simplest to run. **Note: Only NVIDIA GPUs with [compute capability](https://developer.nvidia.com/cuda-gpus) >= 6.0 and 24GB+ of VRAM are supported**.
 
 ### Linux/Windows/WSL (Shared Steps)
 
@@ -176,7 +176,9 @@ Follow these steps:
 
 - Download all HuggingFace models by following [these steps](#download-huggingface-models).
 
-- Download the Docker Image from [here](TODO_LINK) and set up [Docker](https://www.docker.com) with [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html).
+- Set up [Docker](https://www.docker.com) with [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html).
+
+- Download the Docker Image using `docker pull raul2718/fluxsynid` command.
 
 - Run Docker with the following command:
   ```bash
