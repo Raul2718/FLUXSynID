@@ -18,7 +18,6 @@ build_image.sh
 setup.sh
 setup_windows.py
 requirements_docker.txt
-README.md
 experiments/
 .etc/
 assets/
