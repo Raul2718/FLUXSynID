@@ -192,7 +192,7 @@ Follow these steps:
     -v "$(pwd)/models/face_recognition/adaface/checkpoint/adaface_ir101_webface12m.ckpt:/FLUXSynID/models/face_recognition/adaface/checkpoint/adaface_ir101_webface12m.ckpt" \
     -v "$(pwd)/models/face_recognition/arcface/checkpoint/ArcFace.pth:/FLUXSynID/models/face_recognition/arcface/checkpoint/ArcFace.pth" \
     -v "$(pwd)/models/face_recognition/curricularface/checkpoint/CurricularFace.pth:/FLUXSynID/models/face_recognition/curricularface/checkpoint/CurricularFace.pth" \
-    fluxsynid
+    raul2718/fluxsynid:latest
   ```
   > **Note:** If you plan to use [similarity-based identity filtering](#similarity-based-identity-filtering), you must follow the steps in [Face Recognition Model Setup](#face-recognition-model-setup) to download the required checkpoints before running the Docker.
   
