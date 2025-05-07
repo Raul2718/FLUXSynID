@@ -17,6 +17,8 @@ Dockerfile
 build_image.sh
 setup.sh
 setup_windows.py
+requirements_docker.txt
+README.md
 experiments/
 .etc/
 assets/
@@ -37,4 +39,3 @@ models/huggingface/
 models/face_recognition/adaface/checkpoint/adaface_ir101_webface12m.ckpt
 models/face_recognition/arcface/checkpoint/ArcFace.pth
 models/face_recognition/curricularface/checkpoint/CurricularFace.pth
-models/mtcnn/weights/*.pt
