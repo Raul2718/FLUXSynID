@@ -8,9 +8,10 @@
 
 - [Installing](#installing)
   - [Linux/Windows/WSL (Shared Steps)](#linuxwindowswsl-shared-steps)
-  - [Final Setup (Per OS)](#final-setup-per-os)
-    - [Linux/WSL-only](#linuxwsl-only)
-    - [Windows-only](#windows-only)
+    - [Download HuggingFace models](#download-huggingface-models)
+    - [Final Setup (Per OS)](#final-setup-per-os)
+      - [Linux/WSL-only](#linuxwsl-only)
+      - [Windows-only](#windows-only)
   - [Docker](#docker)
 - [Dataset Generation](#dataset-generation)
   - [Setting Identity Attributes](#setting-identity-attributes)
@@ -23,7 +24,7 @@
 
 ## Installing
 
-The framework has been validated using Python 3.11. Both Linux and Windows OS are supported, with Docker image being the easiest to run.
+The framework has been validated using **Python 3.11**. Both Linux and Windows OS are supported, with Docker image being the easiest to run. **Note: Only NVIDIA GPUs with [compute capability](https://developer.nvidia.com/cuda-gpus) >= 6.0 are supported**.
 
 ### Linux/Windows/WSL (Shared Steps)
 
@@ -33,6 +34,7 @@ Follow these common steps regardless of your OS:
 
   ```bash
   git clone https://github.com/Raul2718/FLUXSynID.git
+  cd FLUXSynID
   ```
 
 - Set up a virtual Python environment:
@@ -66,7 +68,7 @@ Follow these common steps regardless of your OS:
   pip install wheel==0.45.1
   ```
 
-- Install GPTQModel:
+- Install `GPTQModel`:
 
   ```bash
   pip install --no-build-isolation -v --no-cache-dir gptqmodel==2.2.0
@@ -78,7 +80,7 @@ Follow these common steps regardless of your OS:
   pip install --no-cache-dir -r requirements.txt
   ```
 
-- Download HuggingFace models:
+#### Download HuggingFace models
 
   1. Go to [https://huggingface.co/settings/tokens/new](https://huggingface.co/settings/tokens/new)
   2. Set a token name (e.g., `FLUX`)
@@ -103,11 +105,11 @@ Follow these common steps regardless of your OS:
 
   9. Ensure all models are downloaded without errors
 
-### Final Setup (Per OS)
+#### Final Setup (Per OS)
 
 Depending on your operating system, follow the appropriate final setup step:
 
-#### Linux/WSL-only
+##### Linux/WSL-only
 
 - Run the setup script:
 
@@ -115,7 +117,7 @@ Depending on your operating system, follow the appropriate final setup step:
   bash setup.sh
   ```
 
-#### Windows-only
+##### Windows-only
 
 - Install `triton-windows`:
 
@@ -139,8 +141,58 @@ Depending on your operating system, follow the appropriate final setup step:
   > `export CUDA_VISIBLE_DEVICES=0`
 
 ### Docker
-WIP...
+A Docker image is provided for easy deployment on systems with NVIDIA GPUs with [compute capability](https://developer.nvidia.com/cuda-gpus) >= 8.0. If your compute capability is between 6.0 and 8.0, you can build your own image on Linux/WSL by following all related installation steps and finally running the `build_image.sh` command. GPUs with a compute capability lower than 6.0 are not supported by this framework.
 
+Follow these steps:
+
+- Git clone this repo:
+
+  ```bash
+  git clone https://github.com/Raul2718/FLUXSynID.git
+  cd FLUXSynID
+  ```
+
+- Set up a virtual Python environment:
+
+  ```bash
+  python -m venv .venv
+  ```
+
+- Activate your virtual environment:
+  - On Linux/WSL:
+    ```bash
+    source .venv/bin/activate
+    ```
+  - On Windows (CMD or PowerShell):
+    ```powershell
+    .venv\Scripts\activate
+    ```
+    
+- Install packages from `requirements_docker.txt`:
+
+  ```bash
+  pip install --no-cache-dir -r requirements_docker.txt
+  ```
+
+- Download all HuggingFace models by following [these steps](#download-huggingface-models).
+
+- Download the Docker Image from [here](TODO_LINK) and set up [Docker](https://www.docker.com) with [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html).
+
+- Run Docker with the following command:
+  ```bash
+  docker run -it --rm --gpus all \
+    --ulimit nofile=10000:10000 \
+    --shm-size=4g \
+    -v "$(pwd)/models/ComfyUI:/FLUXSynID/models/ComfyUI" \
+    -v "$(pwd)/models/Arc2Face:/FLUXSynID/models/Arc2Face" \
+    -v "$(pwd)/models/huggingface:/FLUXSynID/models/huggingface" \
+    -v "$(pwd)/models/face_recognition/adaface/checkpoint/adaface_ir101_webface12m.ckpt:/FLUXSynID/models/face_recognition/adaface/checkpoint/adaface_ir101_webface12m.ckpt" \
+    -v "$(pwd)/models/face_recognition/arcface/checkpoint/ArcFace.pth:/FLUXSynID/models/face_recognition/arcface/checkpoint/ArcFace.pth" \
+    -v "$(pwd)/models/face_recognition/curricularface/checkpoint/CurricularFace.pth:/FLUXSynID/models/face_recognition/curricularface/checkpoint/CurricularFace.pth" \
+    fluxsynid
+  ```
+  > **Note:** If you plan to use [similarity-based identity filtering](#similarity-based-identity-filtering), you must follow the steps in [Face Recognition Model Setup](#face-recognition-model-setup) to download the required checkpoints before running the docker.
+  
 ## Dataset Generation
 
 ### Setting Identity Attributes
@@ -162,17 +214,17 @@ This opens a GUI with several functions:
 
 ![Main screen](assets/attributes_main_screen.png)
 
-- **Create New File** (left-click): Add a new attribute class (e.g., `eye_color.txt`). *Use meaningful, descriptive names with underscores* (e.g., `hair_type`, `eye_color`). These names are important because a language model will infer the meaning of the attribute class based on the filename.
+- **Create New File** (right-click): Add a new attribute class (e.g., `eye_color.txt`). *Use meaningful, descriptive names with underscores* (e.g., `hair_type`, `eye_color`). These names are important because a language model will infer the meaning of the attribute class based on the filename.
 
-- **Edit File** (click existing file): Open a text editor to define the values of that class. Each line should contain one attribute (e.g., `Brown`, `Blue` for eye color). Save using the provided button and return to the main screen.
+- **Edit File** (right-click existing file): Open a text editor to define the values of that class. Each line should contain one attribute (e.g., `Brown`, `Blue` for eye color). Save using the provided button and return to the main screen.
 
-- **Edit Attribute Probabilities** (right-click a file):
+- **Edit Attribute Probabilities** (right-click existing file):
 
   ![Attribute probabilities](assets/attributes_attribute_probs.png)
 
   - Set how likely each attribute in the file should appear. Probabilities must sum to 100%.
 
-- **Delete File** (right-click): Remove an attribute class entirely.
+- **Delete File** (right-click existing file): Remove an attribute class entirely.
 
 #### File Usage Probability
 
@@ -197,7 +249,7 @@ Click `Declare Attribute Clashes` on the main screen to open:
 
 ### Generating Prompts
 
-Generate identity prompts based on your attributes:
+Generate identity prompts via [**Qwen2.5**](https://arxiv.org/abs/2412.15115) LLM based on your attributes:
 
 ```bash
 python -m scripts.generate_prompts --dataset_dir FLUXSynID --num 15000
@@ -207,7 +259,7 @@ This creates a folder `FLUXSynID` with 15,000 subfolders, each defining one iden
 
 ### Generating Document-Style Images
 
-To generate document-style images:
+To generate document-style images with  [**FLUX.1 [dev]**](https://huggingface.co/black-forest-labs/FLUX.1-dev) model:
 
 ```bash
 python -m scripts.generate_document_imgs --dataset_dir FLUXSynID
@@ -217,13 +269,13 @@ Each identity will receive one generated document-style image.
 
 ### Generating Live Capture Images
 
-To generate **LivePortrait** and **PuLID** live images:
+To generate [**LivePortrait**](https://arxiv.org/abs/2407.03168) and [**PuLID**](https://arxiv.org/abs/2404.16022) live images:
 
 ```bash
 python -m scripts.generate_live_imgs --dataset_dir FLUXSynID --num_live_imgs 1
 ```
 
-To generate **Arc2Face** live images:
+To generate [**Arc2Face**](https://arxiv.org/abs/2403.11641) live images:
 
 ```bash
 python -m scripts.generate_live_imgs_arc2face --dataset_dir FLUXSynID --num_live_imgs 1
@@ -256,14 +308,14 @@ The file lists all identity folders that contain diverse identities and should b
 
 Before running the script, place the weights of the chosen FRS model in the appropriate directory:
 
-- **AdaFace**: [Google Drive link](https://drive.google.com/file/d/1dswnavflETcnAuplZj1IOKKP0eM8ITgT/view)
+- [**AdaFace**](https://arxiv.org/abs/2204.00964): [Google Drive link](https://drive.google.com/file/d/1dswnavflETcnAuplZj1IOKKP0eM8ITgT/view)
   - Save to: `.models/face_recognition/adaface/checkpoint`
 
-- **ArcFace**: [OneDrive link](https://1drv.ms/u/s!AhMqVPD44cDOhkPsOU2S_HFpY9dC)
+- [**ArcFace**](https://arxiv.org/abs/1801.07698): [OneDrive link](https://1drv.ms/u/s!AhMqVPD44cDOhkPsOU2S_HFpY9dC)
   - Rename file to `ArcFace.pth`
   - Save to: `.models/face_recognition/arcface/checkpoint`
 
-- **CurricularFace**: [Google Drive link](https://drive.google.com/open?id=1upOyrPzZ5OI3p6WkA5D5JFYCeiZuaPcp)
+- [**CurricularFace**](https://arxiv.org/abs/2004.00288): [Google Drive link](https://drive.google.com/open?id=1upOyrPzZ5OI3p6WkA5D5JFYCeiZuaPcp)
   - Rename file to `CurricularFace.pth`
   - Save to: `.models/face_recognition/curricularface/checkpoint`
 
