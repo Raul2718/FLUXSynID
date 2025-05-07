@@ -24,7 +24,7 @@
 
 ## Installing
 
-The framework has been validated using **Python 3.11**. Both Linux and Windows OS are supported, with Docker image being the easiest to run. **Note: Only NVIDIA GPUs with [compute capability](https://developer.nvidia.com/cuda-gpus) >= 6.0 are supported**.
+The framework has been validated using **Python 3.11**. Both Linux and Windows OS are supported, with Docker image being the simplest to run. **Note: Only NVIDIA GPUs with [compute capability](https://developer.nvidia.com/cuda-gpus) >= 6.0 are supported**.
 
 ### Linux/Windows/WSL (Shared Steps)
 
@@ -97,7 +97,7 @@ Follow these common steps regardless of your OS:
      HF_TOKEN = "PUT_YOUR_TOKEN_HERE"
      ```
 
-  8. Download all models:
+  8. Download all models (**Note: you agree to follow the license agreements of all the models that are downloaded**):
 
      ```bash
      python download_models.py
@@ -183,6 +183,7 @@ Follow these steps:
   docker run -it --rm --gpus all \
     --ulimit nofile=10000:10000 \
     --shm-size=4g \
+    -v "$(pwd)/attributes:/FLUXSynID/attributes" \
     -v "$(pwd)/models/ComfyUI:/FLUXSynID/models/ComfyUI" \
     -v "$(pwd)/models/Arc2Face:/FLUXSynID/models/Arc2Face" \
     -v "$(pwd)/models/huggingface:/FLUXSynID/models/huggingface" \
@@ -191,7 +192,7 @@ Follow these steps:
     -v "$(pwd)/models/face_recognition/curricularface/checkpoint/CurricularFace.pth:/FLUXSynID/models/face_recognition/curricularface/checkpoint/CurricularFace.pth" \
     fluxsynid
   ```
-  > **Note:** If you plan to use [similarity-based identity filtering](#similarity-based-identity-filtering), you must follow the steps in [Face Recognition Model Setup](#face-recognition-model-setup) to download the required checkpoints before running the docker.
+  > **Note:** If you plan to use [similarity-based identity filtering](#similarity-based-identity-filtering), you must follow the steps in [Face Recognition Model Setup](#face-recognition-model-setup) to download the required checkpoints before running the Docker.
   
 ## Dataset Generation
 
@@ -207,6 +208,7 @@ To modify or extend these attributes, run the configuration GUI:
 ```bash
 python -m attributes.prob_settings_app
 ```
+> **Note:** If you are running the Docker image, it is headless (no GUI support), so you should modify the attributes locally first, then start the Docker container. The container will automatically fetch the updated attributes when it runs.
 
 This opens a GUI with several functions:
 
@@ -255,7 +257,7 @@ Generate identity prompts via [**Qwen2.5**](https://arxiv.org/abs/2412.15115) LL
 python -m scripts.generate_prompts --dataset_dir FLUXSynID --num 15000
 ```
 
-This creates a folder `FLUXSynID` with 15,000 subfolders, each defining one identity. Adjust `--dataset_dir` and `--num` as needed.
+This creates a subfolder `FLUXSynID` with 15,000 subfolders, each defining one identity. Adjust `--dataset_dir` and `--num` as needed.
 
 ### Generating Document-Style Images
 
@@ -327,4 +329,16 @@ To apply the filtering and delete all other folders from your dataset:
 
 ```bash
 python -m dataset_filtering.delete_present_folders --dataset_path FLUXSynID --txt_path <PATH_TO_TXT_GENERATED_BEFORE>
+```
+
+## Citation
+If you use **FLUXSynID** framework in your research or applications, please consider citing us:
+
+```
+@misc{FLUXSynID,
+  author       = {Raul Ismayilov, Luuk Spreeuwers, Dzemila Sero},
+  title        = {FLUXSynID: A Framework for Identity-Controlled Synthetic Face Generation with Document and Live Images},
+  year         = {2025},
+  url          = {https://github.com/Raul2718/FLUXSynID},
+}
 ```
