@@ -1,8 +1,8 @@
 # Use NVIDIA base image with CUDA 12.8
 FROM nvidia/cuda:12.8.0-devel-ubuntu22.04
 
-# Set to match your GPU compute capability (e.g. 8.9+PTX). See build_image.sh for auto-detect.
-ENV TORCH_CUDA_ARCH_LIST="8.9+PTX"
+# Set to match your GPU compute capability (e.g. 8.0+PTX). See build_image.sh for auto-detect.
+ENV TORCH_CUDA_ARCH_LIST="8.0+PTX"
 
 ENV DEBIAN_FRONTEND=noninteractive
 

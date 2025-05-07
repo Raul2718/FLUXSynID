@@ -30,6 +30,5 @@ models/huggingface/
 models/face_recognition/adaface/checkpoint/adaface_ir101_webface12m.ckpt
 models/face_recognition/arcface/checkpoint/ArcFace.pth
 models/face_recognition/curricularface/checkpoint/CurricularFace.pth
-models/mtcnn/weights/*.pt
 
 

@@ -10,8 +10,8 @@ echo "Detecting GPU compute capability..."
 if nvidia-smi --help-query-gpu | grep -q 'compute_cap'; then
     compute_capability=$(nvidia-smi --query-gpu=compute_cap --format=csv,noheader | head -n 1)
 else
-    echo "Your version of nvidia-smi doesn't support querying compute capability directly. Defaulting to compute capability of 8.9."
-    compute_capability="8.9"
+    echo "Your version of nvidia-smi doesn't support querying compute capability directly. Defaulting to compute capability of 8.0."
+    compute_capability="8.0"
 fi
 
 arch="${compute_capability}+PTX"
