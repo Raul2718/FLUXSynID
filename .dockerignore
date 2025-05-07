@@ -22,6 +22,7 @@ README.md
 experiments/
 .etc/
 assets/
+attributes/
 ComfyUI/models/
 ComfyUI/user/
 ComfyUI/temp/
