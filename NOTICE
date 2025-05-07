@@ -1,0 +1,17 @@
+NOTICE for FLUXSynID
+===============================
+This project is a derivative work based on ComfyUI as well as ComfyUI-PuLID-Flux-Enhanced, licensed under GPLv3.
+
+ComfyUI related changes (./ComfyUI/):
+- Installation of 3 custom nodes: ComfyUI-PuLID-Flux-Enhanced, comfyui-advancedliveportrait, comfyui_controlnet_aux
+
+
+ComfyUI-PuLID-Flux-Enhanced related changes (./ComfyUI/custom_nodes/ComfyUI-PuLID-Flux-Enhanced):
+- Modifed pulidflux.py to raise a ValueError if no faces are detected
+- Modifed pulidflux.py to load EVA CLIP model from a fixed path
+- Modified eva_clip/factory.py to accept fixed EVA CLIP path
+
+
+Original source:
+- ComfyUI: [https://github.com/comfyanonymous/ComfyUI]
+- ComfyUI-PuLID-Flux-Enhanced: [https://github.com/sipie800/ComfyUI-PuLID-Flux-Enhanced]
