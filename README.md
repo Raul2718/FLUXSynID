@@ -285,6 +285,12 @@ python -m scripts.generate_live_imgs_arc2face --dataset_dir FLUXSynID --num_live
 
 You can increase the number of live images per identity using the `--num_live_imgs` flag.
 
+After all live images are generated, the `dataset_filtering/failed_live.txt` file may list some identities for which face detection on the document-style images failed. This results in missing live images for those identities. To remove these incomplete identities from the dataset, run the following command:
+
+```bash
+python -m dataset_filtering.delete_present_folders --dataset_path FLUXSynID --txt_path ./dataset_filtering/failed_live.txt
+```
+
 ## Similarity-Based Identity Filtering
 
 Optionally, and *preferably before live image generation (right after document image generation)*, you can remove identities which are too visually similar to each other. This ensures dataset diversity and reduces duplicate-like samples.
@@ -292,7 +298,7 @@ Optionally, and *preferably before live image generation (right after document i
 To run similarity filtering:
 
 ```bash
-python -m dataset_filtering.find_similar_ids.py --dataset_dir FLUXSynID --frs adaface --fmr 0.0001
+python -m dataset_filtering.find_similar_ids --dataset_dir FLUXSynID --frs adaface --fmr 0.0001
 ```
 
 This generates a text file:
@@ -328,7 +334,7 @@ Once the similarity filtering script has generated the list, you can use it to r
 To apply the filtering and delete all other folders from your dataset:
 
 ```bash
-python -m dataset_filtering.delete_present_folders --dataset_path FLUXSynID --txt_path <PATH_TO_TXT_GENERATED_BEFORE>
+python -m dataset_filtering.delete_missing_folders --dataset_path FLUXSynID --txt_path <PATH_TO_TXT_GENERATED_BEFORE>
 ```
 
 ## Citation
