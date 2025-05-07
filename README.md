@@ -24,7 +24,7 @@
 
 ## Installing
 
-The framework has been validated using **Python 3.11**. Both Linux and Windows OS are supported, with Docker image being the simplest to run. **Note: Only NVIDIA GPUs with [compute capability](https://developer.nvidia.com/cuda-gpus) >= 6.0 and 24GB+ of VRAM are supported**.
+The framework has been validated using **Python 3.11**. Both Linux and Windows OS are supported, with Docker image being the simplest to run. **Note: Only NVIDIA GPUs with [compute capability](https://developer.nvidia.com/cuda-gpus) >= 6.0, CUDA 12.8, and 24GB+ of VRAM are supported**.
 
 ### Linux/Windows/WSL (Shared Steps)
 
