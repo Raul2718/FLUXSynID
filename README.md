@@ -339,6 +339,9 @@ To apply the filtering and delete all other folders from your dataset:
 python -m dataset_filtering.delete_missing_folders --dataset_path FLUXSynID --txt_path <PATH_TO_TXT_GENERATED_BEFORE>
 ```
 
+## Acknowledgments
+This research was funded by the European Union under the Horizon Europe programme, Grant Agreement No. 101121280 (EINSTEIN).
+
 ## Citation
 If you use **FLUXSynID** framework in your research or applications, please consider citing us:
 
