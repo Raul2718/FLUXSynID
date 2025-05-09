@@ -2,6 +2,8 @@
 
 **FLUXSynID** is a framework for generating high-resolution synthetic face datasets with controllable identity attributes. It produces paired document-style and live capture images per identity, making it ideal for biometric research tasks such as face recognition and morphing attack detection.
 
+**[Download FLUXSynID Dataset (14,889 Synthetic Identities) from Zenodo](https://zenodo.org/records/15172770)**
+
 ![FLUXSynID Example Images](assets/examples.jpg)
 
 ## Table of Contents
