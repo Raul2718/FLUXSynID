@@ -1,6 +1,11 @@
+[![arXiv](https://img.shields.io/badge/arXiv-2505.07530-B31B1B.svg)](https://arxiv.org/abs/2505.07530)
+
+
 # FLUXSynID
 
 **FLUXSynID** is a framework for generating high-resolution synthetic face datasets with controllable identity attributes. It produces paired document-style and live capture images per identity, making it ideal for biometric research tasks such as face recognition and morphing attack detection.
+
+You can find the full paper on [arXiv](https://arxiv.org/abs/2505.07530).
 
 **[Download FLUXSynID Dataset (14,889 Synthetic Identities) from Zenodo](https://zenodo.org/records/15172770)**
 
@@ -348,10 +353,10 @@ This research was funded by the European Union under the Horizon Europe programm
 If you use **FLUXSynID** framework in your research or applications, please consider citing us:
 
 ```
-@misc{FLUXSynID,
-  author       = {Raul Ismayilov, Luuk Spreeuwers, Dzemila Sero},
-  title        = {FLUXSynID: A Framework for Identity-Controlled Synthetic Face Generation with Document and Live Images},
-  year         = {2025},
-  url          = {https://github.com/Raul2718/FLUXSynID},
+@misc{Ismayilov2025FLUXSynID,
+      title={FLUXSynID: A Framework for Identity-Controlled Synthetic Face Generation with Document and Live Images}, 
+      author={Raul Ismayilov and Luuk Spreeuwers and Dzemila Sero},
+      journal = {arXiv preprint arXiv:2505.07530},
+      year={2025}
 }
 ```
