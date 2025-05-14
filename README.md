@@ -347,7 +347,9 @@ python -m dataset_filtering.delete_missing_folders --dataset_path FLUXSynID --tx
 ```
 
 ## Acknowledgments
-This research was funded by the European Union under the Horizon Europe programme, Grant Agreement No. 101121280 (EINSTEIN).
+The FLUXSynID framework was developed under the EINSTEIN project. The EINSTEIN project is funded by the European Union (EU) under G.A. no. 101121280 and UKRI Funding Service under IFS reference 10093453. Views and opinions expressed are however those of the author(s) only and do not necessarily reflect the views of the EU/Executive Agency or UKRI. Neither the EU nor the granting authority nor UKRI can be held responsible for them.
+
+![Funding Icon](assets/eu-funding-icon.png)
 
 ## Citation
 If you use **FLUXSynID** framework in your research or applications, please consider citing us:
