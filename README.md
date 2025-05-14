@@ -357,7 +357,7 @@ If you use **FLUXSynID** framework in your research or applications, please cons
 ```
 @misc{Ismayilov2025FLUXSynID,
       title={FLUXSynID: A Framework for Identity-Controlled Synthetic Face Generation with Document and Live Images}, 
-      author={Raul Ismayilov and Luuk Spreeuwers and Dzemila Sero},
+      author={Raul Ismayilov and Dzemila Sero and Luuk Spreeuwers},
       journal = {arXiv preprint arXiv:2505.07530},
       year={2025}
 }
