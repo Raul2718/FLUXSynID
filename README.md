@@ -89,28 +89,32 @@ Follow these common steps regardless of your OS:
 
 #### Download HuggingFace models
 
-  1. Go to [https://huggingface.co/settings/tokens/new](https://huggingface.co/settings/tokens/new)
-  2. Set a token name (e.g., `FLUX`)
-  3. Tick all user permissions
-  4. In **Repositories permissions**, enter `black-forest-labs/FLUX.1-dev`
-  5. The page should look like this:
+  1. Go to [https://huggingface.co/black-forest-labs/FLUX.1-dev](https://huggingface.co/black-forest-labs/FLUX.1-dev)
+  2. At the top of the page, you will see a notice: `"You need to agree to share your contact information to access this model"`
+  3. Click the `"Agree and access repository"` button.
+  4. After agreeing, you will see the message: `"You have been granted access to this model"`
+  5. Next go to [https://huggingface.co/settings/tokens/new](https://huggingface.co/settings/tokens/new)
+  6. Set a token name (e.g., `FLUX`)
+  7. Tick all user permissions
+  8. In **Repositories permissions**, enter `black-forest-labs/FLUX.1-dev`
+  9. The page should look like this:
 
      ![HF Token](assets/HF_token.png)
 
-  6. Create the token and **copy it**
-  7. Paste it into the `download_models.py` file on line 7:
+  10. Create the token and **copy it**
+  11. Paste it into the `download_models.py` file on line 7:
+      
+      ```python
+      HF_TOKEN = "PUT_YOUR_TOKEN_HERE"
+      ```
 
-     ```python
-     HF_TOKEN = "PUT_YOUR_TOKEN_HERE"
-     ```
+  13. Download all models (**Note: you agree to follow the license agreements of all the models that are downloaded**):
+  
+      ```bash
+      python download_models.py
+      ```
 
-  8. Download all models (**Note: you agree to follow the license agreements of all the models that are downloaded**):
-
-     ```bash
-     python download_models.py
-     ```
-
-  9. Ensure all models are downloaded without errors
+  14. Ensure all models are downloaded without errors
 
 #### Final Setup (Per OS)
 
