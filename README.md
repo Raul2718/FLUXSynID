@@ -1,5 +1,6 @@
 [![arXiv](https://img.shields.io/badge/arXiv-2505.07530-B31B1B.svg)](https://arxiv.org/abs/2505.07530)
-
+[![CVF](https://img.shields.io/badge/CVF-Open_Access-222222.svg)](https://openaccess.thecvf.com/content/ICCV2025W/FoundGen-Bio/html/Ismayilov_FLUXSynID_A_Framework_for_Identity-Controlled_Synthetic_Face_Generation_with_Document_ICCVW_2025_paper.html)
+[![IEEE Xplore](https://img.shields.io/badge/IEEE_Xplore-Document-00629B.svg)](https://ieeexplore.ieee.org/abstract/document/11374353)
 
 # FLUXSynID
 
@@ -359,10 +360,12 @@ The FLUXSynID framework was developed under the EINSTEIN project. The EINSTEIN p
 If you use **FLUXSynID** framework in your research or applications, please consider citing us:
 
 ```
-@misc{Ismayilov2025FLUXSynID,
-      title={FLUXSynID: A Framework for Identity-Controlled Synthetic Face Generation with Document and Live Images}, 
-      author={Raul Ismayilov and Dzemila Sero and Luuk Spreeuwers},
-      journal = {arXiv preprint arXiv:2505.07530},
-      year={2025}
+@InProceedings{Ismayilov_2025_ICCV,
+    author    = {Ismayilov, Raul and Sero, Dzemila and Spreeuwers, Luuk},
+    title     = {FLUXSynID: A Framework for Identity-Controlled Synthetic Face Generation with Document and Live Images},
+    booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV) Workshops},
+    month     = {October},
+    year      = {2025},
+    pages     = {3757-3767}
 }
 ```
