@@ -192,12 +192,18 @@ Follow these steps:
 
 - Download the Docker Image using `docker pull raul2718/fluxsynid` command.
 
+- Create the local dataset directory where the generated data will be saved:
+  ```bash
+  mkdir -p FLUXSynID
+  ```
+
 - Run Docker with the following command:
   ```bash
   docker run -it --rm --gpus all \
     --ulimit nofile=10000:10000 \
     --shm-size=4g \
     -v "$(pwd)/attributes:/FLUXSynID/attributes" \
+    -v "$(pwd)/FLUXSynID:/FLUXSynID/FLUXSynID" \
     -v "$(pwd)/models/ComfyUI:/FLUXSynID/models/ComfyUI" \
     -v "$(pwd)/models/Arc2Face:/FLUXSynID/models/Arc2Face" \
     -v "$(pwd)/models/huggingface:/FLUXSynID/models/huggingface" \
